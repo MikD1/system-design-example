@@ -1,0 +1,41 @@
+specification {
+    element person {
+        style {
+            color green
+            shape person
+        }
+    }
+
+    element group {
+        style {
+            opacity 15%
+        }
+    }
+
+    element frontend {
+        style {
+            shape browser
+        }
+    }
+
+    element service
+
+    element component {
+        style {
+            color secondary
+        }
+    }
+
+    element externalSystem {
+        style {
+            color muted
+            opacity 15%
+        }
+    }
+
+    element database {
+        style {
+            shape storage
+        }
+    }
+}

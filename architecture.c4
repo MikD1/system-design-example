@@ -1,0 +1,51 @@
+model {
+    user = person "User"
+
+    diary = group "Diary System" {
+        frontend = frontend "Frontend"
+        backend = service "Backend" {
+            grades = component "Grades"
+            attendance = component "Attendance"
+            homework = component "Homework"
+        }
+        database = database "DB"
+        s3 = database "S3"
+    }
+
+    auth = externalSystem "Auth Service"
+    notifications = externalSystem "Notification Service"
+
+    user -> frontend
+    
+    frontend -> grades
+    frontend -> attendance
+    frontend -> homework
+    frontend -> s3
+
+    backend -> auth
+    backend -> notifications
+
+    grades -> database
+
+    attendance -> database
+
+    homework -> database
+    homework -> s3
+}
+
+views {
+    view system-context of diary {
+        title "Diary - System Context"
+        include * -> *
+    }
+
+    view container of diary {
+        title "Diary - Container"
+        include *
+    }
+
+    view components of diary.backend {
+        title "Diary - Component"
+        include *
+    }
+}
